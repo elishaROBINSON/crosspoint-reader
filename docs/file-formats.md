@@ -90,11 +90,15 @@ if (parsedSize != fileSize) {
 
 ## `section.bin`
 
-### Version 41
+### Version 42
 
 Each file in `sections/*.bin` stores one laid-out spine section. The header is
 also the cache-busting key: if any layout-affecting setting differs from the
 current reader settings, the section is discarded and rebuilt.
+
+Version 42 appends the internal-link rectangles produced during text layout to
+each serialized page. The reader uses these rectangles for touch navigation;
+older caches are rebuilt because they contain no link geometry.
 
 Version 41 keeps the version 40 serialized layout unchanged. It was bumped
 because simple HTML table rows are now laid out as positioned columns rather
