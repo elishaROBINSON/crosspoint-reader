@@ -1087,6 +1087,7 @@ bool EpubReaderActivity::skipLoopDelay() {
 }
 
 void EpubReaderActivity::renderBook() {
+  currentPageLinks.clear();
   if (!epub) return;
 
   const auto showPendingSyncSaveError = [this]() {
